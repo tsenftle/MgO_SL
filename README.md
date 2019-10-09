@@ -1,3 +1,3 @@
 # MgO_SL
 
-Distributed with publication "Using Statistical Learning to Predict Interactions Between Single Metal Atoms and Modified MgO(100) Supports"
+Distributed as part of the publication "Using Statistical Learning to Predict Interactions Between Single Metal Atoms and Modified MgO(100) Supports"
