@@ -16,49 +16,85 @@
 # *tsenftle@rice.edu
 
 
-The Code is devided into three parts - 
-
+The Code is devided into four parts - 
 
 [Step 1]
-Directory: ./Step_1
-CODE: Main.m
-
-INPUT: BindingEnergyV1.xlsx
-
-OUTPUT: data_set.mat (matlab data file)
-
+Directory: ./Step_1/dopant
+CODE: Main_MgO_dopant.m
+INPUT: BindingEnergy_dopant_V1.xlsx
+OUTPUT: data_set_dopant.mat
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_1/adsorbate
+CODE: Main_MgO_adsorbate.m
+INPUT: BindingEnergy_adsorbate_V1.xlsx
+OUTPUT: data_set_adsorbate.mat
+============================================================================================================================================
 [Step 2]
-Directory: ./Step_2
-CODE: SL script.R
-INPUT: ../Step_1/data_set.mat (matlab data file) 
+Directory: ./Step_2/dopant
+CODE: SL script - dopant.R
+INPUT: ../Step_1/dopant/data_set_dopant.mat
 OUTPUT: (index of selected descriptors from each methods)
 MgO_dopant_LS.txt (Descriptors selected by LASSO using dopant-modified MgO data)
 MgO_dopant_HS.txt (Descriptors selected by Horseshoe prior using dopant-modified MgO data)
 MgO_dopant_DL.txt (Descriptors selected by Dirichlet-Laplace prior using dopant-modified MgO data)
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_2/adsorbate
+CODE: SL script - adsorbate.R
+INPUT: ../Step_1/adsorbate/data_set_adsorbate.mat
+OUTPUT: (index of selected descriptors from each methods)
 MgO_adsorbate_LS.txt (Descriptors selected by LASSO using adsorbate-modified MgO data)
 MgO_adsorbate_HS.txt (Descriptors selected by Horseshoe prior using adsorbate-modified MgO data)
 MgO_adsorbate_DL.txt (Descriptors selected by Dirichlet-Laplace prior using adsorbate-modified MgO data)
-
+============================================================================================================================================
 [Step 3]
 Directory: ./Step_3
-CODE: Analysis_MgO.m
-
+CODE: Analysis_MgO_dopant_TM.m
 INPUT:
-../Step_1/data_set.mat (matlab data file) 
-../Step_2/MgO_dopant_LS.txt (Feature space selected from step 2)
-OUTPUT: part of Figure 7 and 8 in the manuscript
-
-
+../Step_1/dopant/data_set_dopant.mat
+../Step_2/dopant/MgO_dopant_LS.txt (Feature space selected from step 2, LASSO in this case)
+OUTPUT: analysis in RMSE and R^2
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_3
+CODE: Analysis_MgO_adsorbate_TM.m
+INPUT:
+../Step_1/adsorbate/data_set_adsorbate.mat
+../Step_2/adsorbate/MgO_adsorbate_LS.txt (Feature space selected from step 2, LASSO in this case)
+OUTPUT: analysis in RMSE and R^2
+============================================================================================================================================
 [Step 4]
-Directory: ./Step_4
+Directory: ./Step_4/BaO
+CODE: Main_BaO.m
+INPUT: BindingEnergy_dopant_BaO_V1.xlsx
+OUTPUT: data_set_BaO.mat
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_4/BaO
+CODE: Analysis_BaO.m
+INPUT:
+./data_set_BaO.mat
+../Step_2/dopant/MgO_dopant_LS.txt (Feature space selected from step 2, LASSO in this case)
+OUTPUT: analysis in RMSE and R^2
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_4/CaO
 CODE: Main_CaO.m
-
-INPUT: BindingEnergy_CaO_V1.xlsx
-
-OUTPUT: data_set_CaO.mat (matlab data file) 
+INPUT: BindingEnergy_dopant_CaO_V1.xlsx
+OUTPUT: data_set_CaO.mat
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_4/CaO
 CODE: Analysis_CaO.m
-
-INPUT: 
+INPUT:
 ./data_set_CaO.mat
-../Step_2/MgO_dopant_LS.txt (Feature space selected from step 2)
-OUTPUT: part of Figure 9 and 10 in the manuscript
+../Step_2/dopant/MgO_dopant_LS.txt (Feature space selected from step 2, LASSO in this case)
+OUTPUT: analysis in RMSE and R^2
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_4/ZnO
+CODE: Main_ZnO.m
+INPUT: BindingEnergy_dopant_ZnO_V1.xlsx
+OUTPUT: data_set_ZnO.mat
+--------------------------------------------------------------------------------------------------------------------------------------------
+Directory: ./Step_4/ZnO
+CODE: Analysis_ZnO.m
+INPUT:
+./data_set_ZnO.mat
+../Step_2/dopant/MgO_dopant_LS.txt (Feature space selected from step 2, LASSO in this case)
+OUTPUT: analysis in RMSE and R^2
+--------------------------------------------------------------------------------------------------------------------------------------------
