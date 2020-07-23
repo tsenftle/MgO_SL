@@ -4,8 +4,4 @@
  npj Comput Mater 6, 102 (2020) 
  https://rdcu.be/b5KXZ
 
- Department of Chemical and Biomolecular Engineering and Department of Statistics, Rice University, Houston, TX 77005 (USA)
- *meng@rice.edu
- *tsenftle@rice.edu
- 
  Code written by Chun-Yen Liu (Matlab) and Shijia Zhang (R)
